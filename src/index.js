@@ -4,12 +4,15 @@ import Conteudo from "./Conteudo";
 import BarraInferior from "./BarraInferior";
 
 function App() {
+    
+    const stories = ["9gag", "meowed", "barked", "nathan", "wawa", "respondeai", "filomoderna", "memeriago"];
+    const posts = [{perfil: "meowed", imagem: "gato-telefone"}, {perfil: "meowed", imagem: "gato-telefone"}, {perfil: "meowed", imagem: "gato-telefone"}];
+
     return (
         <div>
             <Topo />
-            <Conteudo />
+            <Conteudo stories={stories} posts={posts}/>
             <BarraInferior />
-            <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
         </div>
     );
 }

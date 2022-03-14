@@ -16,18 +16,10 @@ export default function Topo() {
                         <p>Pesquisa</p>
                     </div>
                     <div class="opcoes">
-                        <div class="paper-plane">
-                            <ion-icon name="paper-plane-outline"></ion-icon>
-                        </div>
-                        <div class="compass">
-                            <ion-icon name="compass-outline"></ion-icon>
-                        </div>
-                        <div class="heart">
-                            <ion-icon name="heart-outline"></ion-icon>
-                        </div>
-                        <div class="person">
-                            <ion-icon name="person-outline"></ion-icon>
-                        </div>
+                        <Opcoes nomeIcone="paper-plane" />
+                        <Opcoes nomeIcone="compass" />
+                        <Opcoes nomeIcone="heart" />
+                        <Opcoes nomeIcone="person" />
                     </div>
                 </div>
             </div>
@@ -44,4 +36,12 @@ export default function Topo() {
             </div>
         </div>
     );
+}
+
+function Opcoes(props) {
+    return (
+        <div class={props.nomeIcone}>
+            <ion-icon name={props.nomeIcone + "-outline"}></ion-icon>
+        </div>
+    )
 }

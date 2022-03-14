@@ -414,3 +414,7 @@ strong {
     height: 54px;
     border: 1px solid #dbdbdb;
 }
+
+.mais ion-icon {
+    font-size: 30px;
+}
