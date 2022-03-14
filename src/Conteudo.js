@@ -1,9 +1,7 @@
 export default function Conteudo(props) {
 
 
-    const {stories, posts} = props;
-
-    /* const posts = [{perfil: "meowed", imagem: "gato-telefone"}, {perfil: "meowed", imagem: "gato-telefone"}, {perfil: "meowed", imagem: "gato-telefone"}]; */
+    const { seuPerfil, stories, posts, sugestoes } = props;
 
 
     return (
@@ -20,11 +18,11 @@ export default function Conteudo(props) {
             <div class="sidebar">
                 <div class="seu-perfil">
                     <div class="seu-icon">
-                        <img src="img/catanacomics.png" />
+                        <img src={seuPerfil.imagem} />
                     </div>
                     <div class="seu-nome">
-                        <strong>catanacomics</strong>
-                        <p>Catana</p>
+                        <strong>{seuPerfil.perfil}</strong>
+                        <p>{seuPerfil.nome}</p>
                     </div>
                 </div>
                 <div class="sugestoes-para-voce">
@@ -35,11 +33,7 @@ export default function Conteudo(props) {
                         <p>Ver tudo</p>
                     </div>
                 </div>
-                <Sugestao perfil="bad.vibes.memes" imagem="img/bad.png" mensagem="Segue você" />
-                <Sugestao perfil="chibirdart" imagem="img/chibirdart.png" mensagem="Segue você" />
-                <Sugestao perfil="razoesparaacreditar" imagem="img/razoes.png" mensagem="Novo no Instagram" />
-                <Sugestao perfil="adorable_animals" imagem="img/adorable.png" mensagem="Segue você" />
-                <Sugestao perfil="smallcutecats" imagem="img/smallcutecats.png" mensagem="Segue você" />
+                {sugestoes.map(sugestao => <Sugestao perfil={sugestao.perfil} imagem={sugestao.imagem} mensagem={sugestao.mensagem} />)}
                 <div class="links-sidebar">
                     <p>Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade •
                         Termos • Localizações • Contas mais relevantes • Hashtags •
@@ -80,19 +74,11 @@ function Post(props) {
             <img src={"img/" + props.imagem + ".png"} />
             <div class="post-base">
                 <div class="post-opcoes">
-                    <div class="curtir">
-                        <ion-icon name="heart-outline"></ion-icon>
-                    </div>
-                    <div class="comentar">
-                        <ion-icon name="chatbubble-outline"></ion-icon>
-                    </div>
-                    <div class="compartilhar">
-                        <ion-icon name="paper-plane-outline"></ion-icon>
-                    </div>
+                    <Icone nomeClasse="curtir" icone="heart" />
+                    <Icone nomeClasse="comentar" icone="chatbubble" />
+                    <Icone nomeClasse="compartilhar" icone="paper-plane" />
                     <div class="opcoes-espaco"></div>
-                    <div class="salvar">
-                        <ion-icon name="bookmark-outline"></ion-icon>
-                    </div>
+                    <Icone nomeClasse="salvar" icone="bookmark" />
                 </div>
                 <div class="post-iteracoes">
                     <div class="iteracoes-icon">
@@ -120,6 +106,14 @@ function Sugestao(props) {
             <div class="seguir">
                 <strong>Seguir</strong>
             </div>
+        </div>
+    )
+}
+
+function Icone(props) {
+    return (
+        <div class={props.nomeClasse}>
+            <ion-icon name={props.icone + "-outline"}></ion-icon>
         </div>
     )
 }
